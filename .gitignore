@@ -1,5 +1,6 @@
 dataset/
-logging/
+logger/
 __pycache__/
 *.egg-info/
 dist/
+wandb/

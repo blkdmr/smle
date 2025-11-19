@@ -1,5 +1,0 @@
-wandb
-pandas
-numpy
-datasets
-scikit-learn
