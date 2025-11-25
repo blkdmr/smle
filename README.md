@@ -73,6 +73,17 @@ SMLE relies on a simple YAML structure. You can generate a blank template using:
 smle create yaml
 ```
 
+### Configuration File Name
+
+By default, SMLE will look for a configuration file named `smle.yaml` in the current directory. If you would like to use a different name, a different location, or have multiple configuration files for different configurations, you can set the `config_file` property of SMLE to the path of your file. You must assign the filename before calling `run()`.
+
+```python
+app = SMLE()
+app.config_file = "my_file.yaml"
+...
+app.run()
+```
+
 ## Contributing
 
 Contributions are welcome! If you have ideas for improvements, feel free to fork the repository and submit a pull request.

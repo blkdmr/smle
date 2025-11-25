@@ -4,4 +4,6 @@ dist/
 wandb/
 examples/
 build/
+venv/
+env/
 .DS_Store
