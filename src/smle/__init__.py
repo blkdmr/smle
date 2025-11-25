@@ -1,6 +1,7 @@
 import traceback
 import sys
 from colorama import Fore, Style
+from typing import Callable, Optional, Any, Dict
 
 from smle.args import Parser
 from smle.logging import Logger
@@ -12,14 +13,14 @@ class SMLE:
     The base SMLE application
     """
 
-    def __init__(self, config_file: str="smle.yaml"):
-        self._session_id = generate_haiku_id()
-        self._entrypoint_fn = None
-        self._parser: Parser | None = None
-        self._config_file = config_file
+    def __init__(self, config_file: str = "smle.yaml") -> None:
+        self._session_id: str = generate_haiku_id()
+        self._entrypoint_fn: Optional[Callable] = None
+        self._parser: Optional[Parser] = None
+        self._config_file: str = config_file
 
     @property
-    def config_file(self):
+    def config_file(self) -> str:
         return self._config_file
 
     @config_file.setter
@@ -29,14 +30,14 @@ class SMLE:
         """
         self._config_file = config_file
 
-    def entrypoint(self, entrypoint_fn):
+    def entrypoint(self, entrypoint_fn: Callable) -> Callable:
         """
         The decorator to register the main execution function.
         """
         self._entrypoint_fn = entrypoint_fn
         return entrypoint_fn
 
-    def run(self):
+    def run(self) -> Any:
         """
         The method that executes the application's core logic.
         """

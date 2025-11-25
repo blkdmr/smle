@@ -5,24 +5,25 @@ from datetime import datetime
 import wandb
 from colorama import Fore, Style
 import sys
+from typing import Any, Dict, Optional
 
 class Logger:
 
-    def __init__(self, args):
+    def __init__(self, args: Dict[str, Any]) -> None:
 
-        self._args = args
-        self._log_filename = f'{args["project"]}_{args["session_id"]}.log'
-        self._log_filepath = args["logger"]["dir"]
-        self._log_file = os.path.join(self._log_filepath, self._log_filename)
+        self._args: Dict[str, Any] = args
+        self._log_filename: str = f'{args["project"]}_{args["session_id"]}.log'
+        self._log_filepath: str = args["logger"]["dir"]
+        self._log_file: str = os.path.join(self._log_filepath, self._log_filename)
         self._original_print = builtins.print
-        self._wandb_run = None
+        self._wandb_run: Optional[Any] = None
 
         # Regex to strip ANSI color codes for the log file
         self._ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 
         os.makedirs(args["logger"]["dir"], exist_ok=True)
 
-    def start(self):
+    def start(self) -> None:
         # 1. Create/Wipe log file
         with open(self._log_file, "w", encoding="utf-8") as f:
             f.write("")
@@ -35,12 +36,12 @@ class Logger:
         if self._args.get("wandb"):
             self._init_wandb()
 
-    def stop(self):
+    def stop(self) -> None:
         builtins.print = self._original_print
         if self._wandb_run:
             self._wandb_run.finish()
 
-    def _log_print(self, *objects, sep=" ", end="\n", file=None, flush=False):
+    def _log_print(self, *objects: Any, sep: str = " ", end: str = "\n", file: Optional[Any] = None, flush: bool = False) -> None:
         message = sep.join(map(str, objects))
 
         # 1. Write Clean Text to File (Strip Colors)
@@ -53,7 +54,7 @@ class Logger:
         # 2. Write Colored Text to Console
         self._original_print(*objects, sep=sep, end=end, file=file, flush=flush)
 
-    def _init_wandb(self):
+    def _init_wandb(self) -> None:
         os.environ["WANDB_SILENT"] = "true" # Silence WandB
 
         wandb_conf = self._args.get("wandb", {})

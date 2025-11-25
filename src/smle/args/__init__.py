@@ -2,15 +2,15 @@ import yaml
 import os
 import sys
 from colorama import Fore, Style, init
-from typing import Any
+from typing import Any, Dict
 
 
 class Parser:
 
-    def __init__(self):
-        self._default = ""
+    def __init__(self) -> None:
+        self._default: str = ""
         self._config_file: str = ""
-        self._args = {}
+        self._args: Dict[str, Any] = {}
         # Initialize colorama
         init(autoreset=True)
 
@@ -46,10 +46,10 @@ class Parser:
         return self._args
 
     @property
-    def args(self):
+    def args(self) -> Dict[str, Any]:
         return self._args
 
-    def print(self):
+    def print(self) -> None:
         """Public method to trigger the flattened print with colored paths."""
         # Define a color cycle for nesting levels
         colors = [Fore.LIGHTCYAN_EX, Fore.LIGHTBLUE_EX, Fore.LIGHTMAGENTA_EX, Fore.LIGHTGREEN_EX]

@@ -9,7 +9,7 @@ except ImportError as e:
         "Install it yourself (GPU/CPU) or use 'pip install smle[torch]'."
     ) from e
 
-def set_seed(seed: int):
+def set_seed(seed: int) -> None:
     """
     Sets the random seed for Python, NumPy, and PyTorch to ensure reproducibility.
     """
@@ -27,7 +27,7 @@ def set_seed(seed: int):
 import secrets
 import random
 
-def generate_haiku_id():
+def generate_haiku_id() -> str:
     # A curated list of "beautiful" words
     adjectives = [
         "autumn", "hidden", "bitter", "misty", "silent",
