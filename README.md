@@ -2,7 +2,7 @@
 
 ![GitHub stars](https://img.shields.io/github/stars/blkdmr/pysmle?style=social) ![GitHub forks](https://img.shields.io/github/forks/blkdmr/pysmle?style=social) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/261c40f69583462baa200aee959bcc8f)](https://app.codacy.com/gh/blkdmr/pysmle/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-![PyPI version](https://img.shields.io/pypi/v/pysmle) ![License](https://img.shields.io/github/license/blkdmr/pysmle) [![PyPI Downloads](https://img.shields.io/pypi/dm/pysmle.svg?label=downloads&logo=pypi&color=blue)](https://pypi.org/project/pysmle/)
+![PyPI version](https://img.shields.io/pypi/v/smle) ![License](https://img.shields.io/github/license/blkdmr/pysmle) [![PyPI Downloads](https://img.shields.io/pypi/dm/pysmle.svg?label=downloads&logo=pypi&color=blue)](https://pypi.org/project/smle/)
 
 [![Discord](https://dcbadge.limes.pink/api/server/WxDkvktBAa)](https://discord.gg/WxDkvktBAa)
 
@@ -19,7 +19,7 @@ pySMLE (you can simply call it SMILE!) is a lightweight Python framework that au
 ## Installation
 
 ```bash
-pip install pysmle
+pip install smle
 ````
 
 ## Quickstart
@@ -29,7 +29,7 @@ pip install pysmle
 Run the CLI tool to generate a template and config file:
 
 ```bash
-pysmle init
+smle init
 ```
 
 ### Configuration
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 By default, pySMLE will look for a configuration file named `smle.yaml` in the current directory. If you would like to use a different name, a different location, or have multiple configuration files for different configurations, you can set the `config_file` property of pySMLE to the path of your file. You must assign the filename before calling `run()`.
 
 ```python
-app = pySMLE()
+app = SMLE()
 app.config_file = "my_file.yaml"
 ...
 app.run()
