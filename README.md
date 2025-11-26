@@ -82,7 +82,7 @@ You can put it in the `.env` file, but ensure `.env` is in your `.gitignore`.
 Use the `@app.entrypoint` decorator. Your configuration variables are automatically passed via `args`.
 
 ```python
-from smle import pySMLE
+from smle import SMLE()
 
 app = SMLE()
 
